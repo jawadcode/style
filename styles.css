@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
+html {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+
+/* Nav Bar stuff */
+
+.nav {
+    display: flex;
+    position: fixed;
+    flex-direction: row;
+    width: 100%;
+    background-color: var(--primary);
+    top: 0;
+    z-index: 9999;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav a:visited {
+    color: white;
+}
+
+.nav-brand {
+    padding: 10px 15px;
+    font-weight: 700;
+    font-size: 1.75em;
+    display: flex;
+}
+
+.nav-main {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 0;
+    transition: background-color 150ms ease-in-out;
+    flex-basis: 0;
+    flex-grow: 1;
+}
+
+.nav-item:hover {
+    background-color: var(--primary-light);
+}
+
+.nav-link {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    font-family: Jost;
+}
+
+.menu-button {
+    display: none;
+    background-color: var(--primary-light);
+    font-size: 16pt;
+}
+
+
+/* Different containers */
+
+.card {
+    width: 75%;
+    margin: 30px auto;
+    background-color: var(--card-bg);
+    padding: 30px 35px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--card-shadow);
+    display: flex;
+    flex-direction: row;
+    flex-grow: wrap;
+}
+
+
+/* Form controls: inputs, buttons etc. */
+
+input {
+    outline: none;
+    border: none;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+input:not([type=checkbox]):focus,
+.select:focus {
+    box-shadow: 0 0 5px var(--primary);
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=search],
+input[type=url] {
+    padding: 12px 16px;
+    margin: 5px;
+    background-color: var(--bg);
+    border-radius: 24px;
+    min-width: 200px;
+}
+
+button {
+    transform: translateY(0);
+    outline: none;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px 10px;
+    border-radius: 7px;
+    background-color: var(--secondary);
+    color: white;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+button:hover {
+    filter: brightness(1.25);
+}
+
+
+/* Fancy checkboxes (not really boxes but ok) */
+
+.checkbox:hover,
+.checkbox>label:hover {
+    cursor: pointer;
+    background-color: var(--card-bg) !important;
+    transition: background-color 300ms ease-in-out;
+}
+
+.checkbox>label {
+    font-size: 10.5pt;
+    word-wrap: none;
+    white-space: nowrap;
+}
+
+input[type=checkbox] {
+    outline: none;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: inherit;
+}
+
+input[type=checkbox]::before {
+    content: '\f067';
+    letter-spacing: 5px;
+    font-family: "fontawesome";
+}
+
+input[type=checkbox]:checked::before {
+    content: "\f00c";
+    letter-spacing: 5px;
+    font-family: "fontawesome";
+}
+
+.checkbox {
+    display: inline-flex;
+    justify-self: center;
+    align-items: center;
+    margin: 5px !important;
+    padding: 10px 15px;
+    background-color: var(--bg);
+    border-radius: 20px;
+}
+
+
+/* Radio buttons but better lol */
+
+input[type=radio] {
+    transform: scale(1.3) !important;
+}
+
+.radio-toolbar>label {
+    padding: 10px;
+    border-radius: 20px;
+    margin: 5px;
+}
+
+.radio-toolbar input[type="radio"] {
+    display: none;
+}
+
+.radio-toolbar label {
+    /* change to display: block to have each on one line */
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.radio-toolbar input[type="radio"]:checked+label {
+    background-color: var(--radio-selected);
+}
+
+
+/* Selector that doesn't look like it's from the 90s (border-radius not working with the dropdown) */
+
+.select {
+    display: block;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 400;
+    color: var(--text);
+    padding: 10px 30px 10px 15px;
+    box-sizing: border-box;
+    margin: none;
+    border: none;
+    outline: 0;
+    /* border-radius: 20px; */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: var(--bg);
+    background-image: url("data:image/svg+xml,%3Csvg aria-hidden='true' focusable='false' data-prefix='fas' data-icon='caret-down' role='img' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512' class='svg-inline--fa fa-caret-down fa-w-10 fa-3x'%3E%3Cpath fill='white' d='M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z' class=''%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat, repeat;
+    background-position: right 15px top 50%, 0 0;
+    background-size: .65em auto, 100%;
+    transition: all 200ms ease-in;
+}
+
+
+/* .select:focus {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+option {
+    font-family: inherit;
+    border: none !important;
+} */
+
+
+/* error, warning, info, success message styling */
+
+.error {
+    color: var(--error-text);
+    background-color: var(--error);
+}
+
+.warning {
+    color: var(--warning-text);
+    background-color: var(--warning);
+}
+
+.info {
+    color: var(--info-text);
+    background-color: var(--info);
+}
+
+.success {
+    color: var(--success-text);
+    background-color: var(--success);
+}
+
+.error:hover {
+    background-color: var(--error-text);
+    color: var(--error);
+}
+
+.warning:hover {
+    background-color: var(--warning-text);
+    color: var(--warning);
+}
+
+.info:hover {
+    background-color: var(--info-text);
+    color: var(--info);
+}
+
+.success:hover {
+    background-color: var(--success-text);
+    color: var(--success);
+}
+
+
+/* when card gets cramped */
+
+@media(max-width: 1000px) {
+    .card {
+        flex-wrap: wrap;
+    }
+}
+
+
+/* Replace size with size when nav gets cramped */
+
+@media(max-width: 600px) {
+    .nav-link {
+        padding: 0 15px;
+    }
+    .card {
+        flex-direction: column;
+    }
+}
+
+
+/* This turns the nav-main into a dropdown */
+
+
+/* Again, replace with size when nav gets cramped */
+
+@media(max-width: 500px) {
+    .menu-button {
+        display: flex;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        align-items: center;
+    }
+    .nav {
+        flex-wrap: wrap;
+    }
+    .nav-main {
+        flex-direction: column;
+        width: 100%;
+    }
+    .nav-item {
+        width: 100%;
+    }
+    .nav-item:nth-child(odd) {
+        background-color: var(--primary-light);
+    }
+    .nav-item:nth-child(odd):hover {
+        background-color: var(--primary);
+    }
+    .nav-link {
+        flex-grow: 1;
+        justify-content: center;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .nav-main {
+        display: none;
+    }
+    .show-mobile {
+        display: flex;
+    }
+}
+
+:root {
+    --bg: #eeeeee;
+    --card-bg: #ffffff;
+    --card-shadow: #aaaaaa;
+    --primary: #4285F4;
+    --primary-light: #6b95f6;
+    --secondary: turquoise;
+    --secondary-light: #6ae5d7;
+    --text: #000000;
+    --success: lightgreen;
+    --warning: lightgoldenrodyellow;
+    --error: lightsalmon;
+    --info: lightgrey;
+    --success-text: darkgreen;
+    --warning-text: goldenrod;
+    --error-text: darkred;
+    --info-text: darkgrey;
+    --radio-selected: lightblue;
+}
+
+@media(prefers-color-scheme: dark) {
+     :root {
+        --bg: #222222;
+        --card-bg: #333333;
+        --card-shadow: #111111;
+        --text: #ffffff;
+        --radio-selected: #203040;
+    }
+}
